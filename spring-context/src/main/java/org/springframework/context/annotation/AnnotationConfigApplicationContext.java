@@ -89,13 +89,19 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 	}
 
 	/**
-	 * Create a new AnnotationConfigApplicationContext, scanning for bean definitions
-	 * in the given packages and automatically refreshing the context.
-	 * @param basePackages the packages to check for annotated classes
+	 * 创建一个新的AnnotationConfigApplicationContext，扫描bean定义
+	 * 在给定的包中并自动刷新上下文。
+	 * @param basePackages 从指定包检查带注释的类
 	 */
 	public AnnotationConfigApplicationContext(String... basePackages) {
+		/**
+		 *  初始化 reader 和scanner ,beanFactory，系统和用户的环境变量，
+		 *  classLoader,logger, id, displayName,初始化rootBeanDefine的五个类
+		 */
 		this();
+		// 扫描包
 		scan(basePackages);
+		// 核心逻辑
 		refresh();
 	}
 
